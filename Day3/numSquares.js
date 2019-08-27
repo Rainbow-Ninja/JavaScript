@@ -6,10 +6,15 @@
 // ## 4.2 - Error-Proofing
 // Alter the method, so if it is given a data type in the array that is not a number, it will skip over instead of erroring out
 // _E.g._ square_numbers_of_an_array([4, 5, 6, "A", 7]) should return [16, 25, 36, 49]
-
-function numSquares(array) {
-    array.forEach
+var squArr = []
+function numSquares(num) {
+    if(isNaN(num)){
+        
+    } else {
+        squArr.push(Math.pow(num, 2));
+    }
 }
 
-console.log(numSquares([]));
-console.log(numSquares[1, 2, 3, 4, 5]);
+let array = [5, 6, "A", 7, 8, 1];
+array.forEach(numSquares);
+console.log(squArr);
