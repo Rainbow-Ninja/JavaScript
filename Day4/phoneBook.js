@@ -58,7 +58,7 @@
 //     3 - Exit")
 var phoneBook = [];
 
-function createPhoneEntry(firstName, lastName, isAlive, age, address[streetAddress], address[city], address[state], address[postalCode], phoneNumbers[type], phoneNumbers[number], children, spouse){
+function createPhoneEntry(firstName, lastName, isAlive, age, address, phoneNumbers, children, spouse){
     return {
         "firstName": null,
         "lastName": null,
@@ -118,3 +118,15 @@ function searchUsers(){
             break;
     }
 }
+
+function fullNameSearch(){
+
+};
+
+function firstNameSearch(){
+
+};
+
+function familyNameSearch(){
+
+};

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CallBack Hell</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <button id = "button">Get Jokes</button>
+    <script>
+       // $.get(url, cb) this gets our api joke and chucks it in our callback queue
+        
+        document.getElementById("button").addEventListener
+        ("click", () => {
+            $.get("https://api.chucknorris.io/jokes/random",  (joke1) =>{
+                $.get("https://api.chucknorris.io/jokes/random",  (joke2) =>{
+                    $.get("https://api.chucknorris.io/jokes/random",  (joke3) =>{
+                        $.get("https://api.chucknorris.io/jokes/random",  (joke4) =>{
+                            $.get("https://api.chucknorris.io/jokes/random",  (joke5) =>{
+                                let jokeArray = [joke1.value, joke2.value, joke3.value, joke4.value, joke5.value];
+                                console.log(jokeArray);
+                            });
+                        });
+                    });
+                });
+            });
+        });
+        console.log("execute something else");
+    </script>
+</body>
+</html>
+
+<!----------------------------------------------------------------------------------- -->
+
+<!-- MUCH BETTER EXAMPLE TO AVOID CALLBACK HELL -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button id="button">Get Jokes</button>
+    <script>
+         function compileJokes(num, callback, arr = []) {
+                let url = "https://api.chucknorris.io/jokes/random";
+                $.get(url, (data) => {
+                    arr.push(data.value);
+                    if (num === arr.length) {
+                        return callback(arr);
+                    }
+                    return compileJokes(num, callback, arr);
+                });
+            }
+            document.querySelector("#button").addEventListener("click", () => {
+                compileJokes(10, (data) => {
+                    console.log(data);
+                });
+            });
+    </script>
+</body>
+
+</html> 

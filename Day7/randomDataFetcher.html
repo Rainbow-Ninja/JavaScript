@@ -1,0 +1,36 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Callbacks & JSON</title>
+
+  </head>
+  <body>
+
+    <p id="blip">Empty HTML doc :) Some JS is running. Check your Console!</p>
+    
+    <script>
+    getRandomUser = (parseRandomUser) => {
+      // This function uses AJAX to hit the random user API.
+      // More info: https://randomuser.me
+
+      var request = new XMLHttpRequest();
+      request.open('GET', 'https://randomuser.me/api/', true);
+      
+      request.onload = function () {
+        parseRandomUser(request);
+      };
+
+      request.send();
+    }
+    
+    function parseRandomUser(parseRequest) {
+        console.log(parseRequest);
+        document.getElementById("blip").innerHTML = parseRequest.response;
+    }
+
+    getRandomUser(parseRandomUser); // Execute the function
+    </script>
+  </body>
+</html>
+​
+​
