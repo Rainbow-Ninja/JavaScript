@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="dadJoke1"></h1>
+    <h2 id="dadJoke2"></h2>
+    <h3 id="dadJoke3"></h3>
+    <h4 id="dadJoke4"></h4>
+    <h5 id="dadJoke5"></h5>
+​
+</body>
+<script>
+    function dadJokes(howMany, callBack, jokesArr = []){
+        let url = "https://icanhazdadjoke.com/";
+        $.getJSON(url, (dadJoke) => {
+            jokesArr.push(dadJoke.joke);
+            if(howMany === jokesArr.length) {
+                return callBack(jokesArr);
+            }
+            dadJokes(howMany, callBack, jokesArr);
+        })
+    }
+
+    dadJokes(5, dadJoke => {
+        console.log(dadJoke);
+        document.getElementById("dadJoke1").innerHTML = dadJoke[0];
+        document.getElementById("dadJoke2").innerHTML = dadJoke[1];
+        document.getElementById("dadJoke3").innerHTML = dadJoke[2];
+        document.getElementById("dadJoke4").innerHTML = dadJoke[3];
+        document.getElementById("dadJoke5").innerHTML = dadJoke[4];
+    })
+
+
+    // let jokes = [];
+    // $.getJSON("https://icanhazdadjoke.com/", (dadJoke) => {
+    //   jokes.push(dadJoke.joke);
+    //   console.log("First joke: " + dadJoke.joke);
+    // });
+    // $.getJSON("https://icanhazdadjoke.com/", (dadJoke) => {
+    //   jokes.push(dadJoke.joke);
+    //   console.log("Second joke: " + dadJoke.joke);
+    // });
+    // $.getJSON("https://icanhazdadjoke.com/", (dadJoke) => {
+    //   jokes.push(dadJoke.joke);
+    //   console.log("Third joke: " + dadJoke.joke);
+    // });
+    // $.getJSON("https://icanhazdadjoke.com/", (dadJoke) => {
+    //   jokes.push(dadJoke.joke);
+    //   console.log("Fourth joke: " + dadJoke.joke);
+    // });
+    // $.getJSON("https://icanhazdadjoke.com/", (dadJoke) => {
+    //   jokes.push(dadJoke.joke);
+    //   console.log("Fifth joke: " + dadJoke.joke);
+    // });
+    // console.log("Jokes",jokes)
+</script>
+​

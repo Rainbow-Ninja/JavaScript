@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button id="button">Get Pokemon</button>
+    
+    <script>
+
+        function getPokemon(howMany, callBack, pokeArr = []){
+            rando = Math.floor(Math.random() * 808);
+            let url = `https://pokeapi.co/api/v2/pokemon/${rando}`;
+            $.get(url, (poke) => {
+                   pokeArr.push(poke.name);
+                   if (howMany === pokeArr.length) {
+                       return callBack(pokeArr);
+                   }
+                   return getPokemon(howMany, callBack, pokeArr);
+               });
+        }
+        document.querySelector("button").addEventListener("click", () => {
+               getPokemon(10, (poke) => {
+                   console.log(poke);
+               });
+           });
+
+        // document.querySelector("#button").addEventListener("click", () => {
+        //     $.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 808)}`, (poke1) => {
+        //         $.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 808)}`, (poke2) => {
+        //             $.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 808)}`, (poke3) => {
+        //                 $.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 808)}`, (poke4) => {
+        //                     $.get(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 808)}`, (poke5) => {
+        //                         let pokeArray = [poke1, poke2, poke3, poke4, poke5];
+        //                         console.log(pokeArray);
+        //                     });
+        //                 });
+        //             });
+        //         });    
+        //     });
+        // });
+    </script>
+</body>
+</html>
