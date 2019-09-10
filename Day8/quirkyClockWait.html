@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swirly Moon</title>
+    <style>
+        #moon{
+            font-size: 100px;
+            position: absolute;
+            left: 40%;
+            top: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div id="moon">
+
+    </div>
+    <script>
+        // 1.2 - Showing Suspenseful Build-up
+// See challenge 5 from yesterday -- suspense while waiting/loading still means you need to show some loading progression dots or loading bar to the user!
+// So, while you're making the user wait 3 seconds before telling them if the time ends in an even or odd number, show something such as:
+// "Loading..."
+// "Loading...."
+// "Loading....."
+// "Loading......"
+// "The time ends in an EVEN number!"
+
+function timeNow(){
+    let startTime = Date.now();
+    return new Promise((resolve, reject) => {
+        if(((Math.round(startTime/1000))%2) === 0){
+            setTimeout(function() {
+                moon = false;
+                resolve("The time now ends in an even number");
+            }, 3000);
+        } else {
+            setTimeout(function() {
+                moon = false;
+                reject("The time now ends in an odd number");
+            }, 3000);  
+        }
+    })
+}
+
+var moon = true;
+function loadScreen(){
+    var f = ['🌑', '🌒', '🌓', '🌔', '🌝', '🌖', '🌗', '🌘'];
+    
+    function loop() {
+        if(moon === false){
+            window.location.hash = "";
+            document.getElementById("moon").innerHTML = "";
+            return;
+        } 
+        location.hash = f[Math.floor((Date.now()/100)%f.length)];
+        document.getElementById("moon").innerHTML = f[Math.floor((Date.now()/100)%f.length)];
+        console.log(moon);
+
+        setTimeout(loop, 50);
+    }
+
+    loop();
+}
+
+timeNow()
+    .then((even) => {
+        console.log(even);
+    })
+    .catch((odd) => {
+        console.log(odd);
+    });
+
+    loadScreen();
+
+    </script>
+    
+</body>
+</html>
