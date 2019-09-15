@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom2</title>
+</head>
+<body>
+    <p id="firstPara">Hello World!</p>
+    <p class="blue">Para 2</p>
+    <p class="blue">Para 3</p>
+
+    <script>
+        document.getElementById("firstPara").innerHTML = "changed using DOM manipulation"
+        
+        var myPs = document.getElementsByTagName("p");
+        console.log(myPs);
+
+        var myPara = document.querySelector("p");
+        var myPara2 = document.querySelector("#firstPara");
+        var myPara3 = document.querySelector(".blue");
+        var myPara4 = document.querySelectorAll(".blue");
+        console.log(myPara4[0]); //prints first thing
+
+    </script>
+</body>
+</html>

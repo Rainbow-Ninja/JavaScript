@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Colour Change</title>
+    <style>
+        header, nav, footer{
+            width: 100%;
+            height: 50px;
+            background-color: bisque;
+        }
+        
+        #content{
+            width: 100%;
+            height: 450px;
+            display: flex;
+        }
+
+        .col{
+            border: 2px red solid;
+            width: 33.33%;
+            height: 100%;
+        }
+
+        #first{
+            /* border: 5px solid blue; */
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #button0{
+            float: right;
+        }
+    
+    </style>
+
+</head>
+<body>
+    <header id="header">
+        <button id="Headbutton" type="button">Click for gradients of colour</button>
+    </header>
+    <nav>
+        <h2 id="fontClick">Change me, change me, change me!!</h2>
+        <button id="button0" type="button">Click to change the font!!</button>
+    </nav>
+    <div id="content">
+        <div id="first" class="col">
+            <button id="button1" type="button">Click to Turn Me Orange!</button>
+        </div>
+        <div id="second" class="col">
+            <button id="button2" type="button">Keep Clicking to Change Colours!</button>
+        </div>
+        <div id="third" class="col">
+            <button id="button3" type="button">Click for a Random Colour!</button>
+        </div>
+    </div>
+    <footer></footer>
+
+    <script>
+        //orange click
+        var clickBtn1 = document.getElementById("button1");
+        clickBtn1.addEventListener("click", function(event){
+            var divFinder = document.getElementById("first");
+            divFinder.style.backgroundColor="orange";
+        });
+
+        //array of clicks
+        var colours = ["red", "purple", "blue", "green", "yellow", "orange", "magenta"];
+        var clickBtn2 = document.getElementById("button2");
+        clickBtn2.addEventListener("click", function(event){
+            var div2Finder = document.getElementById("second");
+            div2Finder.style.backgroundColor = colours[Math.round(Math.random()*colours.length)];
+        });
+
+        //random colour
+        var clickBtn3 = document.getElementById("button3");
+        clickBtn3.addEventListener("click", function(event){
+            var div3Finder = document.getElementById("third");
+            div3Finder.style.backgroundColor= `rgb(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)}, ${Math.round(Math.random()*255)})`;
+        });
+
+
+        //random colour
+        startColour1 = Math.round(Math.random()*255);
+        startColour2 = Math.round(Math.random()*255);
+        startColour3 = Math.round(Math.random()*255);
+        var clickBtn4 = document.getElementById("Headbutton");
+        clickBtn4.addEventListener("click", function(event){
+            var div4Finder = document.getElementById("header");
+            startColour1 += 25;
+            startColour2 += 25;
+            startColour3 += 25;
+            div4Finder.style.backgroundColor= `rgb(${startColour1}, ${startColour2}, ${startColour3})`;
+        });
+
+        //change fonts
+        var fontChoices = ["Verdana", "Times New Roman", "Lucida Console", "cursive", "fantasy", "emoji"];
+        var clickBtn5 = document.getElementById("button0");
+        clickBtn5.addEventListener("click", function(event){
+            var div5Finder = document.getElementById("fontClick");
+            div5Finder.style.fontFamily = fontChoices[Math.round(Math.random()*fontChoices.length)];
+        });
+    </script>
+
+</body>
+</html>
+
+<!-- 
+CHALLENGE 1: Customizable Webpage
+    Create a webpage that lets you cycle through different colours and fonts for sections of a page whenever the user clicks a button.
+    For example, you might have a traditional 3-column layout with a navbar & footer.
+    In each of those layout sections should be a button that lets you cycle through some colours for the background, and
+    a button that lets you cycle through some fonts for the text. 
+    
+​
+    You can grab some good layout starter code here:
+    https://www.w3schools.com/css/css_website_layout.asp 
+​
+    You can check out some good web colours here:
+    https://www.w3schools.com/html/html_colors.asp
+​
+    You can check out easy-to-use web fonts here:
+    https://fonts.google.com/
+​
+    You should be able to loop through arrays for colours & arrays for fonts for each section of the layout,
+    just by clicking a button.
+​
+-->

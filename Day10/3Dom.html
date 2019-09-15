@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom3</title>
+
+    <style>
+        .blue{
+            color: blue;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>WELCOME!!</h1>
+    <p>Understanding DOM</p>
+    <div>
+        <ul>
+            <li>Add DOM Elements</li>
+            <li>Query DOM Elements</li>
+            <li>Change DOM Elements</li>
+            <li>Remove DOM Elements</li>
+        </ul>
+    </div>
+
+    <script>
+        var myDiv = document.createElement("div");
+        document.body.appendChild(myDiv);
+        var myPara = document.createElement("p");
+        myDiv.appendChild(myPara);
+        myPara.innerHTML = "DOM manipulation is awesome";
+
+
+        //querying dom elements
+        var myUL = document.querySelector("ul");
+        console.log(myUL);
+        var myLi = document.createElement("li");
+        myUL.appendChild(myLi);
+        myLi.innerHTML = "My Li";
+
+        //giving a class to a heading
+        var title = document.querySelector("h1");
+        title.classList.add("blue");
+
+        title.style.color = "red";
+        title.style.paddingLeft = "30%";
+
+        //remove class from heading
+        title.classList.remove("blue");
+
+        //querySelectorAll and getElementsByTagName
+        //querySelectorAll will return an array of all elements already created
+        var li1 = document.querySelectorAll("li");
+        console.log(li1); //5items
+        //getElementsByTagName will return an array of all elements in cluding ones created after this
+        var li2 = document.getElementsByTagName("li");
+        console.log(li2); //5 items
+
+        //create new li item
+        var newLi = document.createElement("li");
+        myUL.appendChild(newLi);
+
+        console.log(li1); //still 5 items
+        console.log(li2); //now 6 items
+
+        //removes first item with p tag
+        var para = document.querySelector("p");
+        para.remove();
+
+    </script>
+</body>
+</html>
