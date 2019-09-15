@@ -1,0 +1,34 @@
+<!-- 
+            2.1 - Even Milliseconds Spacebar
+            The page should tell the user about this game & to press the spacebar.
+            The game is this:
+            The player has to thold down the spacebar to start the game.
+            If they let go of the spacebar when the current time's milliseconds value is an even number, they win. If it's odd, they lose.
+            While they hold down the spacebar, cycle through some messages. You could tease them or encourage them.
+            While they hold down the spacebar, also show the current time with milliseconds visible. 
+            When they let go of the spacebar, tell the user what the current time is & if they won or lost. -->
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>SpaceBar Game</title>
+            </head>
+            <body>
+                <div id=container>
+                    <h1>Press and hold the spacebar</h1>
+                    <h3 id="title">If you get an even number you win, if you get an odd number you lose</h3>
+                    <h2>Good Luck!</h2>
+
+                </div>
+
+                <script>
+                    var thing = document.getElementById("title")
+                    document.onkeydown = function(){
+                        thing.style.backgroundColor = "red";
+                    };
+                </script>
+            </body>
+            </html>
