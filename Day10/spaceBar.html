@@ -35,13 +35,14 @@ When they let go of the spacebar, tell the user what the current time is & if th
             document.getElementById("demo").innerHTML = n;
             title.style.backgroundColor = `rgb(${Math.round(Math.random()*255)}, ${Math.round(Math.random()*255)}, ${Math.round(Math.random()*255)})`;
         };
+        
         document.onkeyup = function(){
-                if(n%2 == 0){
-                    document.getElementById("winner").innerHTML = "You Win!!"
-                } else {
-                    document.getElementById("winner").innerHTML = "You Lose!!"
-                }
+            if(n%2 == 0){
+                document.getElementById("winner").innerHTML = "You Win!!"
+            } else {
+                document.getElementById("winner").innerHTML = "You Lose!!"
             }
+        }
     </script>
 </body>
 </html>
