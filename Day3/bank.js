@@ -9,31 +9,35 @@
 // * If the user types "withdraw", ask the user for the withdrawal amount and then deduct this from the user's current balance.
 // * Enclose the program statements in a loop to allow the program to repeat until the user chooses to exit the program.
 
-function bank(){
-
-}
 
 let balance = 10;
 var whatDo = null;
+var bankingHistory = [];
 
 while(whatDo != 'exit'){
-    whatDo = prompt("What would you like to do? \nType 'balance' to check you balance \nType 'deposit' to deposit money \nType 'withdraw' to withdraw money \nType 'exit' to exit")
+    whatDo = prompt("What would you like to do? \nType 'balance' to check you balance \nType 'deposit' to deposit money \nType 'withdraw' to withdraw money \nType 'history' to view your banking history \nType 'exit' to exit")
     switch(whatDo.toLowerCase()){
         case "balance":
             alert(`Your balance is $${balance.toFixed(2)}`);
+            bankingHistory.push("\nBalance viewed");
             break;
         case "deposit":
             let depositAmount = prompt("How much would you like to deposit?")
-            balance += parseInt(depositAmount);
+            balance += parseFloat(depositAmount);
+            bankingHistory.push(`\nDeposited $${parseFloat(depositAmount).toFixed(2)}`);
             break;
         case "withdraw":
             let withdrawAmount = prompt(`You currently have $${balance.toFixed(2)} in your bank. \nHow much would you like to withdraw?`);
             if(parseFloat(withdrawAmount) > balance){
-                alert("You don't have that amount to withdraw")
+                alert("You don't have that amount to withdraw");
             } else {
                 balance -= parseFloat(withdrawAmount);
-                alert(`Your balance is now $${balance.toFixed(2)}`)
+                bankingHistory.push(`\nWithdrew $${parseFloat(withdrawAmount).toFixed(2)}`);
+                alert(`Your balance is now $${balance.toFixed(2)}`);
             }
+            break;
+        case "history":
+            alert(`${bankingHistory} \n`);
             break;
         case "exit":
             alert("Have a good day");
