@@ -1,0 +1,82 @@
+<!-- CHALLENGE 3: City Skyline HTML/CSS Art Project
+Check out these city skylines here: https://image.freepik.com/free-vector/black-city-skylines_23-2147504628.jpg
+The challenge is to create something similar to (but better than) one of those skylines.
+
+3.1 - Core Functionality 
+
+    Make a webpage that contains at least 3 skyscrapers in the skyline - and the skyscrapers must have windows! 
+    
+    Keep the shapes simple - boxes are fine. 
+
+    The webpage should have different lighting depending on the time of day.
+
+    You should be able to control the time of day by pressing some buttons on the page. 
+    It should be able to cycle through these states:
+        - morning
+        - day
+        - evening
+        - night
+        - midnight
+
+    In the morning, the city is slowly lighting up. The sky is a gold colour. 
+    The building lights are off, and you can see the colours of the buildings (eg. gray) clear in the light.
+    Street lights are off.
+
+    During the day, the sky is a light blue. Otherwise it's the same as the morning.
+
+    In the evening, the sky is going orange. Some street lights are turning on and some building lights are going on. 
+    Otherwise it's the same as morning/day. 
+
+    At night, the city is dark. The sky is a blue-black colour, the buildings are black and have lights on in some of their windows.
+    There might even be some street lights on near the bottom of the buildings.
+    There's a big full moon in the background of the city, too.
+
+    After midnight, the city is completely asleep. Lights are off, everything is dark. 
+    There's a big full moon in the background of the city - it's the only light right now.
+
+3.2 - OPTIONAL! Randomized Buildings 
+    This might require an overhaul on how you've built your buildings.
+    Every time the page is refreshed, the buildings will be different.
+    These things should be different:
+        - building size
+        - number of rows for the windows in buildings
+        - number of columns for the windows in buildings
+        - the amount of windows in each building (you may need blank/invisible window spaces to keep things working nicely)
+        - the colour of the buildings
+         -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CityScape</title>
+    <link rel="stylesheet" type="text/css" href="cityStyle.css">
+</head>
+<body>
+    <div class="sky">
+        <div class="sun"></div>
+        <div class="buildingDiv"></div>
+    </div>
+    <div class="ground"></div>
+
+<script>
+    var buildingSpot = document.querySelector(".buildingDiv");
+    for(let i = 0; i < Math.ceil(Math.random()*15); i++){
+        var myBuildings = document.createElement("div");
+        myBuildings.setAttribute("class", "building");
+        myBuildings.setAttribute("id", `B${i}`);
+        myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*30+10)}%; margin: 5px`);
+        buildingSpot.appendChild(myBuildings);
+
+        var theBuilding = document.querySelector(`#B${i}`);
+        for(let j = 0; j < Math.ceil(Math.random()*15); j++){
+            var myWindows = document.createElement("div");
+            myWindows.setAttribute("class", "window");
+            theBuilding.appendChild(myWindows);
+        }
+    }
+    </script>
+</body>
+</html>

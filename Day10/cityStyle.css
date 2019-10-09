@@ -1,0 +1,49 @@
+body{
+    height: 95vh;
+    width: 100hw;
+    overflow: hidden;
+}
+.sun{
+    border-radius: 50%;
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    border: rgb(255, 230, 0) 2px solid;
+    box-shadow: inset 15px 15px 10px rgb(255, 230, 0);
+}
+.sky{
+    height: 80%;
+    background-color: aquamarine;
+    vertical-align: bottom;
+}
+.buildingDiv{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: -5px; 
+}
+.ground{
+    width: 100%;
+    height: 20%;
+    background-color: black;
+    margin-bottom: 0;
+}
+.building{
+    border: #000 solid 2px;
+    background-color: #111;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+    overflow: hidden;
+}
+.sky{
+    display: flex;
+}
+.window{
+    border: white solid 1px;
+    width: 10%;
+    height: 10%;
+    margin: 10px;
+    flex: wrap;
+    position: relative;
+}
