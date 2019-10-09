@@ -55,19 +55,22 @@ The challenge is to create something similar to (but better than) one of those s
     <link rel="stylesheet" type="text/css" href="cityStyle.css">
 </head>
 <body>
-    <div class="sky">
+    <button id="morning" type="button">Morning</button>
+    <button id="noon" type="button">Noon</button>
+    <button id="night" type="button">Night</button>
+    <div class="sky" id="skyArea">
         <div class="sun"></div>
         <div class="buildingDiv"></div>
+        <div class="ground"></div>
     </div>
-    <div class="ground"></div>
 
 <script>
     var buildingSpot = document.querySelector(".buildingDiv");
-    for(let i = 0; i < Math.ceil(Math.random()*15); i++){
+    for(let i = 0; i < Math.ceil(Math.random()*20); i++){
         var myBuildings = document.createElement("div");
         myBuildings.setAttribute("class", "building");
         myBuildings.setAttribute("id", `B${i}`);
-        myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*30+10)}%; margin: 5px`);
+        myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*40+10)}%; margin: 5px`);
         buildingSpot.appendChild(myBuildings);
 
         var theBuilding = document.querySelector(`#B${i}`);
@@ -77,6 +80,21 @@ The challenge is to create something similar to (but better than) one of those s
             theBuilding.appendChild(myWindows);
         }
     }
+
+    var clickMorn = document.getElementById("morning");
+        clickMorn.addEventListener("click", function(event){
+            var skyColour = document.getElementById("skyArea");
+            skyColour.style.backgroundImage="-moz-linear-gradient('red','blue')";
+            // skyColour.style.backgroundImage="linearGradient(rgb(145, 173, 250), rgb(249, 253, 223), rgb(252, 230, 106))";
+        });
+
+    var clickNoon = document.getElementById("noon");
+        clickNoon.addEventListener("click", function(event){
+            var skyColour = document.getElementById("skyArea");
+            skyColour.style.backgroundColor="red";
+            console.log("I was clicked");
+            // skyColour.style.backgroundImage=linearGradient(rgb(58, 62, 252), rgb(145, 173, 250));
+        });
     </script>
 </body>
 </html>
