@@ -65,26 +65,26 @@ The challenge is to create something similar to (but better than) one of those s
         <div class="ground"></div>
     </div>
 
-<script>
-    //making random number of buildings
-    var buildingSpot = document.querySelector(".buildingDiv");
-    for(let i = 0; i < Math.ceil(Math.random()*20); i++){
-        var myBuildings = document.createElement("div");
-        myBuildings.setAttribute("class", "building");
-        myBuildings.setAttribute("id", `B${i}`);
-        myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*40+10)}%; margin: 5px`);
-        buildingSpot.appendChild(myBuildings);
-        //make random number of windows per building
-        var theBuilding = document.querySelector(`#B${i}`);
-        for(let j = 0; j < Math.ceil(Math.random()*15); j++){
-            var myWindows = document.createElement("div");
-            myWindows.setAttribute("class", "window");
-            theBuilding.appendChild(myWindows);
+    <script>
+        //making random number of buildings
+        var buildingSpot = document.querySelector(".buildingDiv");
+        for(let i = 0; i < Math.ceil(Math.random()*20); i++){
+            var myBuildings = document.createElement("div");
+            myBuildings.setAttribute("class", "building");
+            myBuildings.setAttribute("id", `B${i}`);
+            myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*40+10)}%; margin: 5px`);
+            buildingSpot.appendChild(myBuildings);
+            //make random number of windows per building
+            var theBuilding = document.querySelector(`#B${i}`);
+            for(let j = 0; j < Math.ceil(Math.random()*15); j++){
+                var myWindows = document.createElement("div");
+                myWindows.setAttribute("class", "window");
+                theBuilding.appendChild(myWindows);
+            }
         }
-    }
 
-    //click morning button
-    var clickMorn = document.getElementById("morning");
+        //click morning button
+        var clickMorn = document.getElementById("morning");
         clickMorn.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #CC5500 0%, #FED691 25%, #596E79 75%, #000066 90%)";
@@ -95,33 +95,41 @@ The challenge is to create something similar to (but better than) one of those s
                 } else {
                     windowCol[i].style.backgroundColor = "#222";
                 }
-             }
-
+                }
+            
+            var sunCol = document.getElementById("sun");
+            sunCol.style.backgroundColor = "yellow";
+            sunCol.style.boxShadow = "15px 15px 10px rgb(255, 230, 0) inset";
+            
             function sunMove() {
                 var elem = document.getElementById("sun");   
                 var pos = 50;
                 var id = setInterval(frame, 5);
                 function frame() {
                     if (pos == 75) {
-                    clearInterval(id);
+                        clearInterval(id);
                     } else {
-                    pos++; 
-                    elem.style.bottom = pos + "px"; 
-                    elem.style.left = pos + "px"; 
+                        pos++; 
+                        elem.style.bottom = pos + "px"; 
+                        elem.style.left = pos + "px"; 
                     }
                 }
             }
             sunMove();
         });
 
-    var clickNoon = document.getElementById("noon");
+        var clickNoon = document.getElementById("noon");
         clickNoon.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #B0DFE5 40%, #8085FF 70%, #0080FF 90%)";
             var windowCol = document.getElementsByClassName("window");
             for(x of windowCol){
                 x.style.backgroundColor = "#222";
-             }
+            }
+
+            var sunCol = document.getElementById("sun");
+            sunCol.style.backgroundColor = "yellow";
+            sunCol.style.boxShadow = "15px 15px 10px rgb(255, 230, 0) inset";
 
             function sunMove() {
                 var elem = document.getElementById("sun");   
@@ -129,18 +137,18 @@ The challenge is to create something similar to (but better than) one of those s
                 var id = setInterval(frame, 5);
                 function frame() {
                     if (pos == 350) {
-                    clearInterval(id);
+                        clearInterval(id);
                     } else {
-                    pos++; 
-                    elem.style.bottom = pos + "px"; 
-                    elem.style.left = pos + "px"; 
+                        pos++; 
+                        elem.style.bottom = pos + "px"; 
+                        elem.style.left = pos + "px"; 
                     }
                 }
             }
             sunMove();
         });
 
-    var clickEvening = document.getElementById("evening");
+        var clickEvening = document.getElementById("evening");
         clickEvening.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #FFE577 0%, #FEC051 15%, #FF8866 30%, #FD6051 45%, #9A7E8E 65%, #526079 90%)";
@@ -151,49 +159,42 @@ The challenge is to create something similar to (but better than) one of those s
                 } else {
                     windowCol[i].style.backgroundColor = "#222";
                 }
-             }
+            }
 
-        function sunMove() {
-            var elem = document.getElementById("sun");   
-            var pos = 350;
-            var id = setInterval(frame, 5);
-            function frame() {
-                if (pos == 850) {
-                clearInterval(id);
-                } else {
-                pos++; 
-                // elem.style.bottom = pos + "px"; 
-                elem.style.left = pos + "px"; 
+            var sunCol = document.getElementById("sun");
+            sunCol.style.backgroundColor = "#FFF222";
+            sunCol.style.boxShadow = "15px 15px 10px rgb(255, 230, 0) inset";
+
+            function sunMove() {
+                var elem = document.getElementById("sun");   
+                var pos = 350;
+                var id = setInterval(frame, 5);
+                function frame() {
+                    if (pos == 850) {
+                        clearInterval(id);
+                    } else {
+                        pos++; 
+                        elem.style.bottom = "350px";
+                        elem.style.left = pos + "px"; 
+                    }
                 }
             }
-        }
-        sunMove();
+            sunMove();
         });
 
-    var clickNight = document.getElementById("night");
+        var clickNight = document.getElementById("night");
         clickNight.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #0A0B3A 25%, #040020 50%, #0D0015 75%, #000000 90%)";
             var windowCol = document.getElementsByClassName("window");
             for(x of windowCol){
                 x.style.backgroundColor = "#FFDF66";
-             }
-
-            function sunMove() {
-                var elem = document.getElementById("sun");   
-                var pos = 850;
-                var id = setInterval(frame, 5);
-                function frame() {
-                    if (pos == 900) {
-                        clearInterval(id);
-                    } else {
-                        pos++; 
-                        elem.style.bottom = pos + "px"; 
-                        elem.style.left = pos + "px"; 
-                    }
-                }
             }
-            sunMove();
+
+            var sunCol = document.getElementById("sun");
+            sunCol.style.backgroundColor = "#F3F47E";
+            sunCol.style.boxShadow = "15px 15px 10px #EDEE3E inset";
+            sunCol.style.boxShadow = "0 0 45px #EDEE3E";
         });
     </script>
 </body>
