@@ -60,7 +60,7 @@ The challenge is to create something similar to (but better than) one of those s
     <button id="evening" type="button">Evening</button>
     <button id="night" type="button">Night</button>
     <div class="sky" id="skyArea">
-        <div class="sun"></div>
+        <div id="sun"></div>
         <div class="buildingDiv"></div>
         <div class="ground"></div>
     </div>
@@ -96,6 +96,22 @@ The challenge is to create something similar to (but better than) one of those s
                     windowCol[i].style.backgroundColor = "#222";
                 }
              }
+
+            function sunMove() {
+                var elem = document.getElementById("sun");   
+                var pos = 50;
+                var id = setInterval(frame, 5);
+                function frame() {
+                    if (pos == 75) {
+                    clearInterval(id);
+                    } else {
+                    pos++; 
+                    elem.style.bottom = pos + "px"; 
+                    elem.style.left = pos + "px"; 
+                    }
+                }
+            }
+            sunMove();
         });
 
     var clickNoon = document.getElementById("noon");
@@ -106,6 +122,22 @@ The challenge is to create something similar to (but better than) one of those s
             for(x of windowCol){
                 x.style.backgroundColor = "#222";
              }
+
+            function sunMove() {
+                var elem = document.getElementById("sun");   
+                var pos = 75;
+                var id = setInterval(frame, 5);
+                function frame() {
+                    if (pos == 350) {
+                    clearInterval(id);
+                    } else {
+                    pos++; 
+                    elem.style.bottom = pos + "px"; 
+                    elem.style.left = pos + "px"; 
+                    }
+                }
+            }
+            sunMove();
         });
 
     var clickEvening = document.getElementById("evening");
@@ -120,6 +152,22 @@ The challenge is to create something similar to (but better than) one of those s
                     windowCol[i].style.backgroundColor = "#222";
                 }
              }
+
+        function sunMove() {
+            var elem = document.getElementById("sun");   
+            var pos = 350;
+            var id = setInterval(frame, 5);
+            function frame() {
+                if (pos == 850) {
+                clearInterval(id);
+                } else {
+                pos++; 
+                // elem.style.bottom = pos + "px"; 
+                elem.style.left = pos + "px"; 
+                }
+            }
+        }
+        sunMove();
         });
 
     var clickNight = document.getElementById("night");
@@ -130,6 +178,22 @@ The challenge is to create something similar to (but better than) one of those s
             for(x of windowCol){
                 x.style.backgroundColor = "#FFDF66";
              }
+
+            function sunMove() {
+                var elem = document.getElementById("sun");   
+                var pos = 850;
+                var id = setInterval(frame, 5);
+                function frame() {
+                    if (pos == 900) {
+                        clearInterval(id);
+                    } else {
+                        pos++; 
+                        elem.style.bottom = pos + "px"; 
+                        elem.style.left = pos + "px"; 
+                    }
+                }
+            }
+            sunMove();
         });
     </script>
 </body>
