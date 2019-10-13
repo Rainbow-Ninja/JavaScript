@@ -57,6 +57,7 @@ The challenge is to create something similar to (but better than) one of those s
 <body>
     <button id="morning" type="button">Morning</button>
     <button id="noon" type="button">Noon</button>
+    <button id="evening" type="button">Evening</button>
     <button id="night" type="button">Night</button>
     <div class="sky" id="skyArea">
         <div class="sun"></div>
@@ -65,6 +66,7 @@ The challenge is to create something similar to (but better than) one of those s
     </div>
 
 <script>
+    //making random number of buildings
     var buildingSpot = document.querySelector(".buildingDiv");
     for(let i = 0; i < Math.ceil(Math.random()*20); i++){
         var myBuildings = document.createElement("div");
@@ -72,7 +74,7 @@ The challenge is to create something similar to (but better than) one of those s
         myBuildings.setAttribute("id", `B${i}`);
         myBuildings.setAttribute("style", `height: ${Math.round(Math.random()*40+10)}%; margin: 5px`);
         buildingSpot.appendChild(myBuildings);
-
+        //make random number of windows per building
         var theBuilding = document.querySelector(`#B${i}`);
         for(let j = 0; j < Math.ceil(Math.random()*15); j++){
             var myWindows = document.createElement("div");
@@ -81,19 +83,29 @@ The challenge is to create something similar to (but better than) one of those s
         }
     }
 
+    //click morning button
     var clickMorn = document.getElementById("morning");
         clickMorn.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
-            skyColour.style.backgroundImage="-moz-linear-gradient('red','blue')";
-            // skyColour.style.backgroundImage="linearGradient(rgb(145, 173, 250), rgb(249, 253, 223), rgb(252, 230, 106))";
+            skyColour.style.backgroundImage = "linear-gradient(0deg, #CC5500 0%, #FED691 25%, #596E79 75%, #000066 90%)";
         });
 
     var clickNoon = document.getElementById("noon");
         clickNoon.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
-            skyColour.style.backgroundColor="red";
-            console.log("I was clicked");
-            // skyColour.style.backgroundImage=linearGradient(rgb(58, 62, 252), rgb(145, 173, 250));
+            skyColour.style.backgroundImage = "linear-gradient(0deg, #B0DFE5 40%, #8085FF 70%, #0080FF 90%)";
+        });
+
+    var clickEvening = document.getElementById("evening");
+        clickEvening.addEventListener("click", function(event){
+            var skyColour = document.getElementById("skyArea");
+            skyColour.style.backgroundImage = "linear-gradient(0deg, #FFE577 0%, #FEC051 15%, #FF8866 30%, #FD6051 45%, #9A7E8E 65%, #526079 90%)";
+        });
+
+    var clickNight = document.getElementById("night");
+        clickNight.addEventListener("click", function(event){
+            var skyColour = document.getElementById("skyArea");
+            skyColour.style.backgroundImage = "linear-gradient(0deg, #0A0B3A 25%, #040020 50%, #0D0015 75%, #000000 90%)";
         });
     </script>
 </body>
