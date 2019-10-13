@@ -88,24 +88,48 @@ The challenge is to create something similar to (but better than) one of those s
         clickMorn.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #CC5500 0%, #FED691 25%, #596E79 75%, #000066 90%)";
+            var windowCol = document.getElementsByClassName("window");
+            for(let i = 0; i < windowCol.length; i++){
+                if(i%3 == 0){
+                    windowCol[i].style.backgroundColor = "#FFDF66";
+                } else {
+                    windowCol[i].style.backgroundColor = "#222";
+                }
+             }
         });
 
     var clickNoon = document.getElementById("noon");
         clickNoon.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #B0DFE5 40%, #8085FF 70%, #0080FF 90%)";
+            var windowCol = document.getElementsByClassName("window");
+            for(x of windowCol){
+                x.style.backgroundColor = "#222";
+             }
         });
 
     var clickEvening = document.getElementById("evening");
         clickEvening.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #FFE577 0%, #FEC051 15%, #FF8866 30%, #FD6051 45%, #9A7E8E 65%, #526079 90%)";
+            var windowCol = document.getElementsByClassName("window");
+            for(let i = 0; i < windowCol.length; i++){
+                if(i%2 == 0){
+                    windowCol[i].style.backgroundColor = "#FFDF66";
+                } else {
+                    windowCol[i].style.backgroundColor = "#222";
+                }
+             }
         });
 
     var clickNight = document.getElementById("night");
         clickNight.addEventListener("click", function(event){
             var skyColour = document.getElementById("skyArea");
             skyColour.style.backgroundImage = "linear-gradient(0deg, #0A0B3A 25%, #040020 50%, #0D0015 75%, #000000 90%)";
+            var windowCol = document.getElementsByClassName("window");
+            for(x of windowCol){
+                x.style.backgroundColor = "#FFDF66";
+             }
         });
     </script>
 </body>
