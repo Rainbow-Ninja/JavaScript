@@ -3,7 +3,7 @@ body{
     width: 100hw;
     overflow: hidden;
 }
-.sun{
+#sun{
     border-radius: 50%;
     background-color: yellow;
     width: 100px;
@@ -18,7 +18,7 @@ body{
 #skyArea{
     width: 100vw;
     height: 100vh;
-    /* background-image: linear-gradient( rgb(145, 173, 250), rgb(249, 253, 223), rgb(252, 230, 106)); */
+    background-image: linear-gradient( rgb(145, 173, 250), rgb(249, 253, 223), rgb(252, 230, 106));
     vertical-align: bottom;
     position: absolute;
     top: 0;
